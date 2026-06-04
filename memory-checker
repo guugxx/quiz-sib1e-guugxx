@@ -1,0 +1,17 @@
+#!/bin/bash
+read -r total
+read -r used
+
+percent=$(( used * 100 / total ))
+
+echo "Total RAM : ${total} MB"
+echo "Used RAM  : ${used} MB"
+echo "Usage     : ${percent}%"
+
+if [ "$percent" -ge 90 ]; then
+  echo "Status    : CRITICAL"
+elif [ "$percent" -ge 70 ]; then
+  echo "Status    : WARNING"
+else
+  echo "Status    : OK"
+fi
